@@ -32,7 +32,7 @@ if(isset($_GET['action']) && $_GET['action']=='delete'){
 if(isset($_GET['action']) && $_GET['action']=='edit'){
     global $wpdb;
     $table_name = $wpdb->prefix . "gallery";
-    if(isset($_POST) && $_POST['mode']=='edit'){
+    if(isset($_POST['mode']) && $_POST['mode']=='edit'){
 
         $wpdb->update(
             $table_name,
@@ -55,9 +55,9 @@ if(isset($_GET['action']) && $_GET['action']=='edit'){
 
 
 function WS_add($mode= 'add',$form= array()){
-    $id = $form->id ? $form->id:'';
-    $title =  $form->title ? $form->title:'';
-    $image =  $form->image ? $form->image:'';
+    $id = isset($form->id) ? $form->id:'';
+    $title =  isset($form->title) ? $form->title:'';
+    $image =  isset($form->image) ? $form->image:'';
     $image_full = $image ? wp_get_attachment_image_src( $image, 'full'):'';
     include(WSPATH.'/includes/add.php');
 }
@@ -70,8 +70,13 @@ function WS_get() {
     include(WSPATH.'/includes/show.php');
  }
 
+if(isset($_GET['action'])){
+    $action = $_GET['action'];
+}else{
+    $action = '';
+}
 
-if($_GET['action']=='' || $_GET['action']=='show'){
+if($action=='' || $action=='show'){
     WS_get();
 }
 

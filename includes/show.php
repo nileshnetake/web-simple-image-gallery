@@ -6,7 +6,7 @@
     <form action="" method="post" id="ws_form">
         <input type="hidden" name="page" value="" />
         <table class="table table-striped table-bordered table-condensed albu   mList">
-            <?php if($_GET['msg']!=''){?><tr><td align="center" colspan="3"><div  class="success"><?php echo $_GET['msg'] ?></div></td></tr> <?php } ?>
+            <?php if(isset($_GET['msg']) && $_GET['msg']!=''){?><tr><td align="center" colspan="3"><div  class="success"><?php echo $_GET['msg'] ?></div></td></tr> <?php } ?>
             <tr>
                 <th>Title</th>
                 <th>Image</th>
