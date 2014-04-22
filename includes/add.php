@@ -5,12 +5,12 @@
     <form action="" method="post" id="ws_form_add">
         <input type="hidden" name="page" value="<?php echo $_GET['page']?>" />
         <input type="hidden" name="mode" value="<?php echo $mode?>" />
-        <input type="hidden" name="id" value="<?php echo $form->id?>" />
+        <input type="hidden" name="id" value="<?php echo isset($form->id)? $form->id:''?>" />
         <table cellspacing="0" class="wp-list-taxonomy">
             <tbody>
             <tr>
                 <td><label>Title</label></td>
-                <td><input type="text" name="title" id="title" class="required" value="<?php echo $form->title?>"> </td>
+                <td><input type="text" name="title" id="title" class="required" value="<?php echo isset($form->title)? $form->title : '';?>"> </td>
             </tr>
             <tr>
                 <td><label>Image</label></td>
@@ -22,8 +22,8 @@
             <tr>
                 <td colspan="2" align="right">
                     <div class="uploader">
-                        <img class="custom_media_image" src="<?php echo $image_full[0]?>" />
-                        <input class="custom_media_id" type="hidden" name="attachment_id" value="<?php echo $form->image?>">
+                        <img class="custom_media_image" src="<?php echo isset($image_full[0])?$image_full[0]:'';?>" />
+                        <input class="custom_media_id" type="hidden" name="attachment_id" value="<?php echo isset($form->image)?$form->image:''?>">
                     </div>
                 </td>
             </tr>
