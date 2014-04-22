@@ -22,14 +22,15 @@ Installation
 ---------------------------------------------------
 1. Upload "web-simple-image-gallery" to the "/wp-content/plugins/" directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Place a shortcode in your page
+3. Create a page from backend and place a shortcode [ws_gallery], you can also place shortcode using php code
+on any page like <?php echo do_shortcode('[ws_gallery]') ?>
 
 
-Screenshot
-----------------------------------------------------
-1. The screenshot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
-2. The screenshot description corresponds to screenshot-2.(png|jpg|jpeg|gif).
-3. The screenshot description corresponds to screenshot-3.(png|jpg|jpeg|gif).
+Screenshots
+------------------------------------
+1. Add image from backend corresponds to add-image.png.
+2. Listing of images corresponds to image-listing.png
+
 
 Changelog
 -----------------------------------------------------

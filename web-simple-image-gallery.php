@@ -53,8 +53,8 @@ function WS_deactivated(){
 
 add_action('admin_menu', 'WS_plugin_menu');
 
-function WS_plugin_menu()
-{
+function WS_plugin_menu(){
+
     add_menu_page("Web Simple Image Gallery", "Web Simple Image Gallery", "list_users", "ws-gallery", "WS_gallery", "", "87");
 
 }
@@ -64,17 +64,62 @@ function WS_gallery(){
      include(WSPATH.'/includes/crud.php');
 }
 
-add_action('admin_print_scripts', 'TO_admin_scripts');
-function TO_admin_scripts()
-{
-
-    wp_enqueue_media();
+add_action('admin_print_scripts', 'WS_admin_scripts');
+function WS_admin_scripts(){
+      wp_enqueue_media();
 }
 
-add_action('admin_print_styles', 'TO_admin_styles');
 
-//[ws_gallery]
-function getws_gallery( $atts='' ){
+add_action('admin_print_styles', 'WS_admin_styles');
+
+function WS_admin_styles(){
+    wp_enqueue_style( 'ws-admin.css', WSURL.'/css/ws-admin.css' );
+    wp_enqueue_script( 'validate.js', WSURL.'/js/validate.js');
+}
+
+add_action('wp_print_styles', 'WS_print_styles');
+
+function WS_print_styles(){
+    $myCssFile = WSURL . '/css/ws.css';
+    wp_register_style('ws.css', $myCssFile);
+    wp_enqueue_style( 'ws.css');
+}
+
+
+add_action( 'wp_enqueue_scripts', 'WS_print_scripts' );
+
+function WS_print_scripts(){
+        wp_enqueue_style( 'fancybox.css', WSURL.'/css/jquery.fancybox.css' );
+        wp_enqueue_style( 'ws.css', WSURL.'/css/ws.css' );
+        wp_enqueue_script( 'fancybox-init.js', WSURL.'/js/fancybox-init.js');
+        wp_enqueue_script( 'fancybox.pack.js', WSURL.'/js/jquery.fancybox.pack.js');
 
 }
+
+function getws_gallery(){
+    global $wpdb;
+    $output = '';
+    $table_name = $wpdb->prefix . "gallery";
+    $results = $wpdb->get_results( "SELECT id, title,image FROM $table_name ORDER BY id DESC" );
+
+    if(!empty($results) && count($results) > 0){
+        $output.= '<div class="ws">';
+        $output.= '<ul class="galleryImages">';
+        foreach($results as $key=>$val){
+            $image = wp_get_attachment_image( $val->image, 'thumb');
+            $image_full = wp_get_attachment_image_src( $val->image, 'full');
+            $output.= '<li>';
+            $output.= '<a  rel="group" class="fancybox" href="'.$image_full[0].'">';
+            $output.= $image;
+            $output.= '</a>';
+            $output.= '</li>';
+        }
+        $output.= '</ul>';
+        $output.= '</div>';
+        return $output;
+    }else{
+        return 'No images yet';
+    }
+}
+
 add_shortcode( 'ws_gallery', 'getws_gallery' );
