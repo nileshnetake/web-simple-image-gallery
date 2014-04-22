@@ -9,11 +9,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Provides facility to add  a images from backend and display them on front end
-On frontend images use fancybox
+On frontend images use fancybox to display images in pop-up
 
 == Description ==
 Provides facility to add  a images from backend and display them on front end
-On frontend images use fancybox
+On frontend images use fancybox to display images in pop up
 
 
 
