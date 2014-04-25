@@ -89,10 +89,10 @@ function wsig_print_styles(){
 add_action( 'wp_enqueue_scripts', 'wsig_print_scripts' );
 
 function wsig_print_scripts(){
-        wp_enqueue_style( 'fancybox.css', WSIGURL.'/css/jquery.fancybox.css' );
+        wp_enqueue_style( 'prettyPhoto.css', WSIGURL.'/css/prettyPhoto.css' );
         wp_enqueue_style( 'wsig.css', WSIGURL.'/css/wsig.css' );
-        wp_enqueue_script( 'fancybox-init.js', WSIGURL.'/js/fancybox-init.js');
-        wp_enqueue_script( 'fancybox.pack.js', WSIGURL.'/js/jquery.fancybox.pack.js');
+        wp_enqueue_script( 'fancybox-init.js', WSIGURL.'/js/preetyphoto-init.js');
+        wp_enqueue_script( 'preetyPhoto.js', WSIGURL.'/js/jquery.prettyPhoto.js');
 
 }
 
@@ -109,7 +109,7 @@ function wsig_get_gallery(){
             $image = wp_get_attachment_image( $val->image, 'thumb');
             $image_full = wp_get_attachment_image_src( $val->image, 'full');
             $output.= '<li>';
-            $output.= '<a  rel="group" class="fancybox" href="'.$image_full[0].'">';
+            $output.= '<a  rel="prettyPhoto[pp_gal]"  href="'.$image_full[0].'">';
             $output.= $image;
             $output.= '</a>';
             $output.= '</li>';
