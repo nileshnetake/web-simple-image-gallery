@@ -10,11 +10,11 @@
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides facility to add  a images from backend and display them on front end
+Provides facility to add  a images from backend and display them on front end using shortcode
 
  Description
  -------------------------------------------------
-Provides facility to add  a images from backend and display them on front end
+Provides facility to add  a images from backend and display them on front end using shortcode
 
 
 
@@ -22,8 +22,8 @@ Installation
 ---------------------------------------------------
 1. Upload "web-simple-image-gallery" to the "/wp-content/plugins/" directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Create a page from backend and place a shortcode [ws_gallery], you can also place shortcode using php code
-on any page like <?php echo do_shortcode('[ws_gallery]') ?>
+3. Create a page from backend and place a shortcode [wsig_gallery], you can also place shortcode using php code
+on any page like <?php echo do_shortcode('[wsig_gallery]') ?>
 
 
 Screenshots
