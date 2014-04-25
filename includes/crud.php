@@ -1,5 +1,4 @@
 <?php
-
 global $wpdb;
 if(isset($_GET['action']) && $_GET['action']=='add'){
     if(isset($_POST) && count($_POST) > 0){
@@ -16,7 +15,7 @@ if(isset($_GET['action']) && $_GET['action']=='add'){
 
 
     }else{
-        WS_add();
+        wsig_add();
     }
 }
 
@@ -50,24 +49,24 @@ if(isset($_GET['action']) && $_GET['action']=='edit'){
     }
     $id = $_GET['id'];
     $res =  $wpdb->get_row("SELECT id,image,title FROM $table_name WHERE id=$id");
-    WS_add('edit',$res);
+    wsig_add('edit',$res);
 }
 
 
-function WS_add($mode= 'add',$form= array()){
+function wsig_add($mode= 'add',$form= array()){
     $id = isset($form->id) ? $form->id:'';
     $title =  isset($form->title) ? $form->title:'';
     $image =  isset($form->image) ? $form->image:'';
     $image_full = $image ? wp_get_attachment_image_src( $image, 'full'):'';
-    include(WSPATH.'/includes/add.php');
+    include(WSIGPATH.'/includes/add.php');
 }
 
 
-function WS_get() {
+function wsig_get() {
     global $wpdb;
     $table_name = $wpdb->prefix . "gallery";
     $results = $wpdb->get_results( "SELECT id, title,image FROM $table_name ORDER BY id DESC" );
-    include(WSPATH.'/includes/show.php');
+    include(WSIGPATH.'/includes/show.php');
  }
 
 if(isset($_GET['action'])){
@@ -77,7 +76,7 @@ if(isset($_GET['action'])){
 }
 
 if($action=='' || $action=='show'){
-    WS_get();
+    wsig_get();
 }
 
 
