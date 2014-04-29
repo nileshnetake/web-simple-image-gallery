@@ -25,6 +25,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
 define('WSIGPATH',    plugin_dir_path(__FILE__));
 define('WSIGURL',     plugins_url('', __FILE__));
 
